@@ -4,15 +4,14 @@ namespace Tests\Feature\Database;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log; // Importação correta do Log
+use Illuminate\Support\Facades\Log;
 use Tests\TestCase;
 
 class DatabaseConnectionTest extends TestCase
 {
     use RefreshDatabase;
 
-    #[\PHPUnit\Framework\Attributes\Test] // Use o atributo Test
-    public function it_can_connect_to_the_database()
+    public function  testCanConnectToDatabase()
     {
         Log::info('Iniciando o teste de conexão com o banco de dados.');
 
