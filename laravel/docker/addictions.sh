@@ -9,10 +9,11 @@ apt-get update && apt-get install -y \
     unixodbc-dev \
     git \
     libzip-dev \
-    libldap2-dev
+    libldap2-dev \
+    libpq-dev
 
 # Instalar extensões PHP
-docker-php-ext-install ldap zip
+docker-php-ext-install ldap zip pgsql pdo_pgsql
 
 # Configurar o repositório Microsoft para msodbcsql17
 echo "deb [arch=amd64] https://packages.microsoft.com/debian/12/prod/ $(lsb_release -cs) main" > /etc/apt/sources.list.d/microsoft-prod.list
