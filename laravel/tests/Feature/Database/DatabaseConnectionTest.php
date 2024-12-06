@@ -32,4 +32,23 @@ class DatabaseConnectionTest extends TestCase
             $this->fail('Erro inesperado: ' . $e->getMessage());
         }
     }
+
+    public function testCanConnectToPostgres()
+    {
+        Log::info('Iniciando o teste de conexão com o banco de dados PostgreSQL.');
+
+        try {
+            $result = DB::connection("pgsql")->select('SELECT 1 AS test');
+
+            Log::info('Consulta ao PostgreSQL executada com sucesso.');
+
+            $this->assertNotEmpty($result, 'O resultado da consulta ao PostgreSQL está vazio.');
+        } catch (\Illuminate\Database\QueryException $e) {
+            $this->fail('Erro na consulta ao banco de dados PostgreSQL: ' . $e->getMessage());
+        } catch (\PDOException $e) {
+            $this->fail('Erro de conexão com o banco de dados PostgreSQL: ' . $e->getMessage());
+        } catch (\Exception $e) {
+            $this->fail('Erro inesperado no banco de dados PostgreSQL: ' . $e->getMessage());
+        }
+    }
 }
